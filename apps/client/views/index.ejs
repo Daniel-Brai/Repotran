@@ -1,0 +1,147 @@
+    <%- include('./partials/basehead.ejs'); %>
+    <link rel="stylesheet" href="/stylesheets/app.min.css">
+    <script type="module" src="/javascript/alpine/alpine.min.js"></script>
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body class="h-screen">
+<main>
+    <header class="bg-white dark:bg-gray-900">
+        <nav x-data="{ isOpen: false }" class="container mx-auto p-6 lg:flex lg:items-center lg:justify-between">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a class="text-2xl font-bold text-gray-800 hover:text-gray-700 dark:text-white dark:hover:text-gray-300 lg:text-3xl" href="/">Repotran</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="flex lg:hidden">
+                    <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 hover:text-gray-600 focus:text-gray-600 focus:outline-none dark:text-gray-200 dark:hover:text-gray-400 dark:focus:text-gray-400" aria-label="toggle menu">
+                        <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+                        </svg>
+
+                        <svg x-show="isOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+            <div x-cloak :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']" class="absolute inset-x-0 z-20 w-full bg-white px-6 py-4 shadow-md transition-all duration-300 ease-in-out dark:bg-gray-900 lg:relative lg:top-0 lg:mt-0 lg:flex lg:w-auto lg:translate-x-0 lg:items-center lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none lg:dark:bg-transparent">
+                <div class="flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:space-y-0">
+                    <a class="text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-6" href="/">Home</a>
+                    <a class="text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-6 cursor-pointer" @click="document.querySelector('#features').scrollIntoView({behaviour: 'smooth'})">Features</a>
+                    <a class="text-gray-700 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400 lg:mx-6 cursor-pointer" @click="document.querySelector('#contact').scrollIntoView({behaviour: 'smooth'})">Contact</a>
+                </div>
+
+                <a class="mt-4 block h-10 transform rounded-md border px-5 py-2 text-center text-sm capitalize text-gray-700 transition-colors duration-300 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 lg:mt-0 lg:w-auto" href="/account/signin"> Sign in </a>
+            </div>
+        </nav>
+
+        <div class="container mx-auto px-6 py-16 pt-28 text-center">
+            <div class="mx-auto max-w-lg">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl">Manage your inventory and transactions with Repotran.</h1>
+
+                <p class="mt-6 text-gray-500 dark:text-gray-300">A smart tool designed for the hassle of running a business venture today.</p>
+
+                <div class="mx-auto mt-6 w-full max-w-sm rounded-md border bg-transparent focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 focus-within:ring-opacity-40 dark:border-gray-700 dark:focus-within:border-blue-300">
+                    <form class="flex flex-col md:flex-row" action="/account/signup" method="GET">
+                        <input type="email" placeholder="Enter your email address" class="m-1 h-10 flex-1 appearance-none border-none bg-transparent px-4 py-2 text-gray-700 placeholder-gray-400 focus:placeholder-transparent focus:outline-none focus:ring-0 dark:text-gray-200" />
+
+                        <button type="button" class="m-1 h-10 transform rounded-md bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-6 py-28">
+            <h1 class="text-2xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Features.</h1>
+
+            <p class="mt-4 text-gray-500 dark:text-gray-400">Why use us and what you gain by using us</p>
+
+
+            <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-16 xl:grid-cols-3">
+                <div>
+                    <div class="inline-block rounded-lg bg-blue-600 p-3 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What can i expect at my first consultation?</h1>
+
+                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="inline-block rounded-lg bg-blue-600 p-3 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What are your opening house?</h1>
+
+                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="inline-block rounded-lg bg-blue-600 p-3 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Do i need a referral?</h1>
+
+                        <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="min-h-screen bg-white dark:bg-gray-900 lg:flex">
+        <div class="flex w-full flex-col justify-center p-8 lg:w-1/2 lg:bg-gray-100 lg:px-12 lg:dark:bg-gray-800 xl:px-32">
+            <h1 class="text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-5xl">Contact Us.</h1>
+
+            <p class="mt-4 text-gray-500 dark:text-gray-400">Ask us everything and we would love to hear from you</p>
+        </div>
+
+        <div class="flex w-full flex-col justify-center p-8 pt-0 lg:w-1/2 lg:px-12 xl:px-24">
+            <form action="/inquiry/contact" method="POST">
+                <div class="-mx-2 md:flex md:items-center">
+                    <div class="flex-1 px-2">
+                        <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Full Name</label>
+                        <input type="text" placeholder="John Doe" class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-40 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:placeholder-gray-600 dark:focus:border-blue-400" />
+                    </div>
+
+                    <div class="mt-4 flex-1 px-2 md:mt-0">
+                        <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Email address</label>
+                        <input type="email" placeholder="johndoe@example.com" class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-40 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:placeholder-gray-600 dark:focus:border-blue-400" />
+                    </div>
+                </div>
+
+                <div class="mt-4 w-full">
+                    <label class="mb-2 block text-sm text-gray-600 dark:text-gray-200">Message</label>
+                    <textarea class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-400 focus:ring-opacity-40 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:placeholder-gray-600 dark:focus:border-blue-400 md:h-56" placeholder="Message"></textarea>
+                </div>
+
+                <button class="mt-4 w-full transform rounded-md bg-blue-500 px-6 py-3 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">get in touch</button>
+            </form>
+        </div>
+    </section>
+
+    <%- include('./partials/footer.ejs'); %>
+</main>
+</body>
+</html>
