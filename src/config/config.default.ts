@@ -13,7 +13,7 @@ export interface DATABASE_PROPS {
 }
 
 export interface TOKEN_PROPS {
-  readonly hash_salt: number;
+  readonly salt_rounds: number;
   readonly jwt_secret_key: string;
   readonly generic_secret_key: string;
 }
@@ -25,16 +25,16 @@ export interface IConfig {
 
 export const config: IConfig = {
   DATABASE: {
-    name: configService.get<string>('DATABASE_NAME'),
-    host: configService.get<string>('DATABASE_HOST'),
-    url: configService.get<string>('DATABASE_URL'),
-    port: configService.get<number>('DATABASE_PORT'),
-    username: configService.get<string>('DATABASE_USERNAME'),
-    password: configService.get<string>('DATABASE_PASSWORD'),
+    name: configService.get<string>('DATABASE_NAME') || process.env.DATABASE_NAME,
+    host: configService.get<string>('DATABASE_HOST') || process.env.DATABASE_HOST,
+    url: configService.get<string>('DATABASE_URL') || process.env.DATABASE_URL,
+    port: +configService.get<number>('DATABASE_PORT') || +process.env.DATABASE_PORT,
+    username: configService.get<string>('DATABASE_USERNAME') || process.env.DATABASE_USERNAME,
+    password: configService.get<string>('DATABASE_PASSWORD') || process.env.DATABASE_PASSWORD,
     sync: true,
   },
   TOKENS: {
-    hash_salt: configService.get<number>('HASH_SALT'),
+    salt_rounds: +configService.get<number>('SALT_ROUNDS'),
     jwt_secret_key: configService.get<string>('JWT_SECRET_KEY'),
     generic_secret_key: configService.get<string>('GENERIC_SECRET_KEY'),
   },
