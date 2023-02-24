@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
-import { User } from '../users/entities/user.entity';
 import { PasswordManager } from '../shared/utils/password.manager';
 import IRequestUser from "../shared/interfaces/request-user.interface";
 
@@ -12,7 +11,7 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string): Promise<IRequestUser | null> {
-    const user: User = await this.usersService.findByEmail(email);
+    const user = await this.usersService.findByEmail(email);
     const valid_password = await this.passwordManager.validatePassword(password, user.password)
 
     if (user && valid_password) {

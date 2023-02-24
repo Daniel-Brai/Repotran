@@ -1,7 +1,8 @@
 enum Role {
-  User = 'user',
-  SubManager = 'submanager',
-  Cashier = 'cashier',
+  MANAGER = 'manager',
+  SUBMANAGER = 'submanager',
+  CASHIER = 'cashier',
+  GENERIC = 'generic'
 }
 
 export default Role;
