@@ -1,10 +1,16 @@
-import { BaseProductEntity } from './base-product.entity';
 import { BeforeInsert, Column, Entity, OneToMany } from 'typeorm';
-import { InStock } from '../enums/in-stock.enum';
+import { BaseProductEntity } from './base-product.entity';
 import { Product } from './order-product.entity';
+import InStock from '../enums/in-stock.enum';
 
 @Entity()
 export class InventoryProduct extends BaseProductEntity {
+  @Column({ type: 'string', nullable: false, unique: true })
+  public name: string;
+
+  @Column({ type: 'string', nullable: true })
+  public description: string;
+
   @Column({ type: 'decimal', nullable: false })
   public price: number;
 

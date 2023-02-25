@@ -6,7 +6,7 @@ import {
   Min,
   Max,
 } from 'class-validator';
-import { Order } from '../enums/order.enum';
+import Order from '../enums/order.enum';
 
 export class PageOptionsDto {
   @IsEnum({ Order })

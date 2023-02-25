@@ -36,42 +36,42 @@ export class ProductService {
     return products
   }
 
-  async findByName(name: string): Promise<Product | null> {
-    const product = await this.productRepository.findOneBy({
-      name: name,
-    });
-    if (!product) {
-      throw new NotFoundException(
-        `The Product with the name: ${name}, does not exist!`,
-      );
-    }
-    return product;
-  }
-
-  async createProduct(createProductDto: CreateProductDto): Promise<Product> {
-    const product = await this.productRepository.create(createProductDto);
-    return await this.productRepository.save(product);
-  }
-
-  async update(id: string, updateProductDto: UpdateProductDto) {
-    const product_found = await this.productRepository.findOneBy({
-      id: id,
-    });
-    if (!product_found) {
-      throw new NotFoundException(`The product does not exist!`);
-    }
-    const product = await this.productRepository.preload({
-      id: id,
-      ...updateProductDto,
-    });
-    if (!product) {
-      throw new NotFoundException(`The product with the id ${id} not found!`);
-    }
-    return this.productRepository.save(product);
-  }
-
-  async remove(name: string) {
-    const product = await this.findByName(name);
-    return await this.productRepository.remove(product);
-  }
+  // async findByName(name: string): Promise<InventoryProduct | null> {
+  //   const product = await this.productRepository.findOneBy({
+  //     name: name,
+  //   });
+  //   if (!product) {
+  //     throw new NotFoundException(
+  //       `The Product with the name: ${name}, does not exist!`,
+  //     );
+  //   }
+  //   return product;
+  // }
+  //
+  // async createProduct(createProductDto: CreateProductDto): Promise<Product> {
+  //   const product = await this.productRepository.create(createProductDto);
+  //   return await this.productRepository.save(product);
+  // }
+  //
+  // async update(id: string, updateProductDto: UpdateProductDto) {
+  //   const product_found = await this.productRepository.findOneBy({
+  //     id: id,
+  //   });
+  //   if (!product_found) {
+  //     throw new NotFoundException(`The product does not exist!`);
+  //   }
+  //   const product = await this.productRepository.preload({
+  //     id: id,
+  //     ...updateProductDto,
+  //   });
+  //   if (!product) {
+  //     throw new NotFoundException(`The product with the id ${id} not found!`);
+  //   }
+  //   return this.productRepository.save(product);
+  // }
+  //
+  // async remove(name: string) {
+  //   const product = await this.findByName(name);
+  //   return await this.productRepository.remove(product);
+  // }
 }

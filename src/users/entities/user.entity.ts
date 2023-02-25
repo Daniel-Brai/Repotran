@@ -1,7 +1,7 @@
 import {Column, Entity, ManyToOne } from 'typeorm';
 import { BaseUserEntity } from './base-user.entity';
-import Role from '../roles/role.enum';
-import {Manager} from "./manager.entity";
+import Role from '../enums/role.enum';
+import { Manager } from "./manager.entity";
 
 @Entity({ orderBy: { created_at: 'DESC' } })
 export class User extends BaseUserEntity {

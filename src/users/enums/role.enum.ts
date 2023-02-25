@@ -5,4 +5,5 @@ enum Role {
   GENERIC = 'generic',
   CUSTOMER = 'customer'
 }
+
 export default Role;

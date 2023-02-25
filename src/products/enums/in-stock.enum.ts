@@ -1,4 +1,6 @@
-export enum InStock {
+enum InStock {
     TRUE = 'true',
     FALSE = 'false'
 }
+
+export default InStock;

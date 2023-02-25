@@ -1,4 +1,6 @@
-export enum Order {
+enum Order {
     ASC = 'ASC',
     DESC = 'DESC',
 }
+
+export default Order;

@@ -7,7 +7,7 @@ import {
   MinLength,
   MaxLength,
 } from 'class-validator';
-import { InStock } from '../enums/in-stock.enum';
+import InStock from '../enums/in-stock.enum';
 
 export class CreateProductDto {
   @MaxLength(100)

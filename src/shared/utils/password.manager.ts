@@ -1,5 +1,5 @@
 import { genSalt, hash, compare } from 'bcrypt';
-import { config } from '../../config/config.default'
+import config from '../config/config.default'
 
 export class PasswordManager {
     async encrypt(password: string): Promise<string> {

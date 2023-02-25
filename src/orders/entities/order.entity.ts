@@ -11,7 +11,7 @@ import {
 import { Exclude } from 'class-transformer';
 import { InventoryProduct } from '../../products/entities/inventory-product.entity';
 import { User } from '../../users/entities/user.entity';
-import { Payment } from '../../products/enums/payment.enum';
+import Payment from '../enums/payment.enum';
 
 @Entity({ orderBy: { created_at: 'DESC' } })
 export class Order {
@@ -44,9 +44,9 @@ export class Order {
 
   @BeforeInsert()
   async Insert() {
+    let sum = 0;
     this.products_ordered.forEach((product: InventoryProduct) => {
-      let sum = 0;
-      sum += product.total_quantity_of_products * product.price;
+      sum += (product.total_quantity_of_products * product.price);
       this.total_price_of_products_ordered = sum;
     });
   }
